@@ -1,0 +1,19 @@
+﻿<Window x:Class="Mecalux.Client.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mecalux.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBox FontSize="20" Width="652" Height="111" materialDesign:HintAssist.Hint="Type your text here." Margin="10,10,10,10" Background="#00000000" BorderBrush="#893409B1" Cursor="Arrow"/>
+            <ComboBox Width="200" materialDesign:HintAssist.Hint="Select an Order Option" SelectionChanged="ComboBox_SelectionChanged"/>
+            <Button FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Order text" Margin="10,10,10,10" />
+            <Button FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Get statistics" Margin="10,10,10,10"/>
+            <TextBlock FontSize="26" HorizontalAlignment="Center" Width="690" Height="167"/>
+        </StackPanel>
+    </Grid>
+</Window>
