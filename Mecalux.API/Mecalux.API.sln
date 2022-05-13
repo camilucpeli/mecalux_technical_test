@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecalux.API", "Mecalux.API.csproj", "{0978D9A5-5A7D-4E2A-956A-A80DF2AA0425}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0068D4D1-4D6C-4C45-9ADF-A35666A826D0} = {0068D4D1-4D6C-4C45-9ADF-A35666A826D0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecalux.Business", "..\Mecalux.Business\Mecalux.Business.csproj", "{0068D4D1-4D6C-4C45-9ADF-A35666A826D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3BF9096-22C9-41DC-BBAB-508B1C0872C3} = {D3BF9096-22C9-41DC-BBAB-508B1C0872C3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecalux.DTOs", "..\Mecalux.DTOs\Mecalux.DTOs.csproj", "{D3BF9096-22C9-41DC-BBAB-508B1C0872C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecalux.Business.Tests", "..\Mecalux.Business.Tests\Mecalux.Business.Tests.csproj", "{CB1895B9-47B0-4BF4-B30C-E6AA785BF72E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0978D9A5-5A7D-4E2A-956A-A80DF2AA0425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0978D9A5-5A7D-4E2A-956A-A80DF2AA0425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0978D9A5-5A7D-4E2A-956A-A80DF2AA0425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0978D9A5-5A7D-4E2A-956A-A80DF2AA0425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0068D4D1-4D6C-4C45-9ADF-A35666A826D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0068D4D1-4D6C-4C45-9ADF-A35666A826D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0068D4D1-4D6C-4C45-9ADF-A35666A826D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0068D4D1-4D6C-4C45-9ADF-A35666A826D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BF9096-22C9-41DC-BBAB-508B1C0872C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BF9096-22C9-41DC-BBAB-508B1C0872C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BF9096-22C9-41DC-BBAB-508B1C0872C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BF9096-22C9-41DC-BBAB-508B1C0872C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB1895B9-47B0-4BF4-B30C-E6AA785BF72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB1895B9-47B0-4BF4-B30C-E6AA785BF72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB1895B9-47B0-4BF4-B30C-E6AA785BF72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB1895B9-47B0-4BF4-B30C-E6AA785BF72E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FFAE634F-0D34-4BDE-A71A-6C5E9D7E2331}
+	EndGlobalSection
+EndGlobal
