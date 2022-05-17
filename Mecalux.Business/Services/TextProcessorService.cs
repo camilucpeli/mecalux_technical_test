@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Mecalux.Business.Services
 {
@@ -24,14 +23,28 @@ namespace Mecalux.Business.Services
         /// <param name="textToOrder">Text with words to order.</param>
         /// <param name="orderOption">Order option: AlphabeticAsc, AlphabeticDec, LenghtAsc.</param>
         /// <returns>A list with the ordered words.</returns>
-        public List<string> GetOrderedText(string textToOrder, OrderOptions orderOption)
+        public List<string> GetOrderedText(string textToOrder, string orderOptionText)
         {
-            return orderOption switch
+
+            if (textToOrder == null || textToOrder == string.Empty) return new List<string>();
+            if (orderOptionText == null || orderOptionText == string.Empty) return new List<string>();
+
+            return MapOrderOptions(orderOptionText) switch
             {
                 OrderOptions.AlphabeticAsc => GetTextAlphabeticAsc(textToOrder),
                 OrderOptions.AlphabeticDesc => GetTextAlphabeticDesc(textToOrder),
                 OrderOptions.LenghtAsc => GetTextLenghtAsc(textToOrder),
                 _ => new List<string>(),
+            };
+        }
+
+        private OrderOptions MapOrderOptions(string orderOptionText)
+        {
+            return orderOptionText switch
+            {
+                "AlphabeticAsc" => OrderOptions.AlphabeticAsc,
+                "AlphabeticDesc" => OrderOptions.AlphabeticDesc,
+                "LenghtAsc" => OrderOptions.LenghtAsc
             };
         }
 
@@ -42,6 +55,8 @@ namespace Mecalux.Business.Services
         /// <returns>An object with the statistics information.</returns>
         public TextStatistics GetStatistics(string textToAnalyze)
         {
+            if(textToAnalyze == null || textToAnalyze == string.Empty) return new TextStatistics();
+
             return new TextStatistics()
             {
                 HyphensQuantity = GetHyphensQuantity(textToAnalyze),

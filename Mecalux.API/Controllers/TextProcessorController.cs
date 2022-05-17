@@ -2,11 +2,12 @@
 using Mecalux.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mecalux.API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TextProcessorController : ControllerBase
     {
@@ -18,20 +19,23 @@ namespace Mecalux.API.Controllers
         }
 
         [HttpGet]
-        public List<OrderOptions> GetOrderOptions()
+        [Route("GetOrderOptions")]
+        public List<string> GetOrderOptions()
         {
 
-            return _service.GetOrderOptions();
+            return _service.GetOrderOptions().Select(o => o.ToString()).ToList();
         }
 
         [HttpGet]
-        public List<string> GetOrderedText(string textToOrder, OrderOptions orderOption)
+        [Route("GetOrderedText")]
+        public List<string> GetOrderedText([FromQuery] string textToOrder, [FromQuery] string orderOption)
         {
             return _service.GetOrderedText(textToOrder, orderOption);
         }
 
         [HttpGet]
-        public TextStatistics GetStatistics(string textToAnalyze)
+        [Route("GetStatistics")]
+        public TextStatistics GetStatistics([FromQuery]  string textToAnalyze)
         {
             return _service.GetStatistics(textToAnalyze);
         }

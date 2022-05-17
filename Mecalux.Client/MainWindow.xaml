@@ -9,11 +9,11 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-            <TextBox FontSize="20" Width="652" Height="111" materialDesign:HintAssist.Hint="Type your text here." Margin="10,10,10,10" Background="#00000000" BorderBrush="#893409B1" Cursor="Arrow"/>
-            <ComboBox Width="200" materialDesign:HintAssist.Hint="Select an Order Option" SelectionChanged="ComboBox_SelectionChanged"/>
-            <Button FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Order text" Margin="10,10,10,10" />
-            <Button FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Get statistics" Margin="10,10,10,10"/>
-            <TextBlock FontSize="26" HorizontalAlignment="Center" Width="690" Height="167"/>
+            <TextBox Name="InputTextBox" FontSize="20" Width="652" Height="111" materialDesign:HintAssist.Hint="Type your text here." Margin="10,10,10,10" Cursor="Arrow" TextChanged="TextBox_TextChanged"/>
+            <ComboBox Name="OrderOptionsComboBox" Width="200" materialDesign:HintAssist.Hint="Select an Order Option" IsEnabled="False"/>
+            <Button Name="OrderTextButton" FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Order text" Margin="10,10,10,10" Click="Button_Click" IsEnabled="False"/>
+            <Button Name="GetStatisticsButton" FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Get statistics" Margin="10,10,10,10" IsEnabled="False" Cursor="Hand" Click="Button_Click"/>
+            <TextBlock Name="ResultText" FontSize="26" HorizontalAlignment="Center" Width="690" Height="167"/>
         </StackPanel>
     </Grid>
 </Window>

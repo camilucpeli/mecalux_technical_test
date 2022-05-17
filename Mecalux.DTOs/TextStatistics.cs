@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mecalux.DTOs
+﻿namespace Mecalux.DTOs
 {
     public class TextStatistics
     {

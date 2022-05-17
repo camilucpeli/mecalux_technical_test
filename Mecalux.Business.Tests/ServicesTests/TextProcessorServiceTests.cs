@@ -27,7 +27,7 @@ namespace Mecalux.Business.Tests.ServicesTests
             new[] { "uncertainty", "timetable", "study", "sculpture", "question", "glove", "friend", "fox", "disagree", "creation" })]
         public void GetOrderedTextAlphabeticallyTest(string textToOrder, OrderOptions orderOption, string[] expected)
         {
-            var actual = _textProcessorService.GetOrderedText(textToOrder, orderOption);
+            var actual = _textProcessorService.GetOrderedText(textToOrder, orderOption.ToString());
             Assert.IsTrue(Enumerable.SequenceEqual(actual, expected));
         }
 
@@ -36,7 +36,7 @@ namespace Mecalux.Business.Tests.ServicesTests
         [TestCase("study sculpture creation disagree timetable question uncertainty fox glove friend", OrderOptions.LenghtAsc)]
         public void GetOrderedTextByLenghtTest(string textToOrder, OrderOptions orderOption)
         {
-            var actual= _textProcessorService.GetOrderedText(textToOrder, orderOption);
+            var actual= _textProcessorService.GetOrderedText(textToOrder, orderOption.ToString());
 
             Assert.IsTrue(AreWordsOrderedByLenght(actual));
         }
