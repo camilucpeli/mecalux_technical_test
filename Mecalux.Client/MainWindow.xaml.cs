@@ -27,16 +27,16 @@ namespace Mecalux.Client
             OrderOptionsComboBox.IsEnabled = true;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var srcButton = e.Source as Button;
             switch (srcButton.Name)
             {
                 case "OrderTextButton":
-                    OrderTextAsync();
+                    await OrderTextAsync();
                     break;
                 case "GetStatisticsButton":
-                    GetStatisticsAsync();
+                    await GetStatisticsAsync();
                     break;
                 default:
                     break;
