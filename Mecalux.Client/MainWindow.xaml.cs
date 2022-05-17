@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,20 +11,19 @@ namespace Mecalux.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static ApiClient _client;
+        HttpClient _client = new HttpClient();
         public MainWindow()
         {
-            _client = new ApiClient();
             InitializeComponent();
-            FillOrderOptionsComboBox();
             InputTextBox.Focus();
         }
+        
 
-        private void FillOrderOptionsComboBox()
+        private async Task FillOrderOptionsComboBoxAsync()
         {
-            var orderOptions = _client.GetOrderOptions();
+            var orderOptions = await ApiClient.GetOrderOptions(_client);
 
-            OrderOptionsComboBox.ItemsSource = orderOptions.Result;
+            OrderOptionsComboBox.ItemsSource = orderOptions;
 
             OrderOptionsComboBox.IsEnabled = true;
         }
@@ -48,7 +49,7 @@ namespace Mecalux.Client
             if (InputTextBox.Text == null || InputTextBox.Text == string.Empty) return;
             var text = InputTextBox.Text;
 
-            var response = _client.GetStatistics(text);
+            var response = ApiClient.GetStatistics(_client, text);
 
             ResultText.Text = response.Result;
         }
@@ -61,7 +62,7 @@ namespace Mecalux.Client
             var orderOption = OrderOptionsComboBox.SelectedValue.ToString();
             var text = InputTextBox.Text;
 
-            var response = _client.GetOrderedText(text, orderOption);
+            var response = ApiClient.GetOrderedText(_client, text, orderOption);
 
             ResultText.Text = response.Result;
         }
@@ -84,6 +85,11 @@ namespace Mecalux.Client
         {
             if (OrderOptionsComboBox.SelectedItem != null) OrderTextButton.IsEnabled = true;
             else OrderTextButton.IsEnabled = false;
+        }
+
+        private void StackPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            _ = FillOrderOptionsComboBoxAsync();
         }
     }
 }

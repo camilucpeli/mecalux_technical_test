@@ -4,11 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mecalux.Client"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Loaded="StackPanel_Loaded">
             <TextBox Name="InputTextBox" FontSize="20" Width="652" Height="111" materialDesign:HintAssist.Hint="Type your text here." Margin="10,10,10,10" Cursor="Arrow" TextChanged="TextBox_TextChanged"/>
             <ComboBox Name="OrderOptionsComboBox" Width="200" materialDesign:HintAssist.Hint="Select an Order Option" IsEnabled="False"/>
             <Button Name="OrderTextButton" FontSize="16" HorizontalAlignment="Center" Height="30" Width="200" Content="Order text" Margin="10,10,10,10" Click="Button_Click" IsEnabled="False"/>
