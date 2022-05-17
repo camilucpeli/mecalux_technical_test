@@ -82,7 +82,7 @@ namespace Mecalux.Client
 
         private void OrderOptionsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (OrderOptionsComboBox.SelectedItem != null) OrderTextButton.IsEnabled = true;
+           if (OrderOptionsComboBox.SelectedItem != null) OrderTextButton.IsEnabled = true;
             else OrderTextButton.IsEnabled = false;
         }
 
