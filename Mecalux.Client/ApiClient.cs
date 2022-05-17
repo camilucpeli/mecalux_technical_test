@@ -9,43 +9,50 @@ namespace Mecalux.Client
 {
     public class ApiClient
     {
-        const string apiUrl = "http://localhost:5000/textprocessor/";
+        const string apiUrl = "http://localhost:5000/textprocessor";
         public static HttpClient httpClient = new HttpClient();
-        public static async Task<List<string>> GetOrderOptions(HttpClient client)
+
+
+        public async Task<List<string>> GetOrderOptions()
         {
-            HttpResponseMessage response = null;
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri("http://localhost:5000/textprocessor/GetOrderOptions"));
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri($"{apiUrl}/GetOrderOptions"));
+            
             try
             {
-                response = await client.SendAsync(requestMessage);
+                HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
                 return await response.Content.ReadFromJsonAsync<List<string>>();
 
             }
             catch (Exception e)
             {
                 
-                
             }
             return null;
 
         }
 
-        public static async Task<string> GetStatistics(HttpClient client, string text)
+        public async Task<string> GetStatistics(string text)
         {
             var paramethers = new Dictionary<string, string>()
             {
                 {"textToAnalyze", text}
             };
 
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri(QueryHelpers.AddQueryString("http://localhost:5000/textprocessor/GetStatistics", paramethers)));
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri(QueryHelpers.AddQueryString($"{apiUrl}/GetStatistics", paramethers)));
+            try
+            {
+                var responseMessage = await httpClient.SendAsync(requestMessage);
+                return await responseMessage.Content.ReadAsStringAsync();
+            }
+            catch (Exception e)
+            {
 
-            var responseMessage = await client.SendAsync(requestMessage);
+            }
 
-            return await responseMessage.Content.ReadAsStringAsync();
-            
+            return null;
         }
 
-        public static async Task<string> GetOrderedText(HttpClient client, string text, string orderOption)
+        public async Task<string> GetOrderedText(string text, string orderOption)
         {
             var paramethers = new Dictionary<string, string>()
             {
@@ -54,11 +61,18 @@ namespace Mecalux.Client
             };
 
             HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, 
-                new Uri(QueryHelpers.AddQueryString("http://localhost:5000/textprocessor/GetOrderedText", paramethers)));
+                new Uri(QueryHelpers.AddQueryString($"{apiUrl}/GetOrderedText", paramethers)));
+            try
+            {
+                var responseMessage = await httpClient.SendAsync(requestMessage);
+                return await responseMessage.Content.ReadAsStringAsync();
+            }
+            catch (Exception e)
+            {
 
-            var responseMessage = await client.SendAsync(requestMessage);
+            }
 
-            return await responseMessage.Content.ReadAsStringAsync();
+            return null;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +10,7 @@ namespace Mecalux.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        HttpClient _client = new HttpClient();
+        ApiClient _client = new ApiClient();
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +20,7 @@ namespace Mecalux.Client
 
         private async Task FillOrderOptionsComboBoxAsync()
         {
-            var orderOptions = await ApiClient.GetOrderOptions(_client);
+            var orderOptions = await _client.GetOrderOptions();
 
             OrderOptionsComboBox.ItemsSource = orderOptions;
 
@@ -34,27 +33,27 @@ namespace Mecalux.Client
             switch (srcButton.Name)
             {
                 case "OrderTextButton":
-                    OrderText();
+                    OrderTextAsync();
                     break;
                 case "GetStatisticsButton":
-                    GetStatistics();
+                    GetStatisticsAsync();
                     break;
                 default:
                     break;
             }
         }
 
-        private void GetStatistics()
+        private async Task GetStatisticsAsync()
         {
             if (InputTextBox.Text == null || InputTextBox.Text == string.Empty) return;
             var text = InputTextBox.Text;
 
-            var response = ApiClient.GetStatistics(_client, text);
+            var response = await _client.GetStatistics(text);
 
-            ResultText.Text = response.Result;
+            ResultText.Text = response;
         }
 
-        private void OrderText()
+        private async Task OrderTextAsync()
         {
             if (InputTextBox.Text == null || InputTextBox.Text == string.Empty) return;
             if(OrderOptionsComboBox.SelectedValue == null) return;
@@ -62,9 +61,9 @@ namespace Mecalux.Client
             var orderOption = OrderOptionsComboBox.SelectedValue.ToString();
             var text = InputTextBox.Text;
 
-            var response = ApiClient.GetOrderedText(_client, text, orderOption);
+            var response = await _client.GetOrderedText( text, orderOption);
 
-            ResultText.Text = response.Result;
+            ResultText.Text = response;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
